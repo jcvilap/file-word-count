@@ -75,5 +75,5 @@ Institute is offering a US $1 million reward to anyone who has a formal proof th
 
 ```
 ### Usage
-Clone repo, run `npm install` and then run `npm run dev` to start the server locally under `localhost:3000`.
+Clone repo, run `npm install` and then run `npm run dev` to start the server locally.
 
