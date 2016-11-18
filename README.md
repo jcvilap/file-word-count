@@ -1,7 +1,7 @@
 # Word Counter
 This is a small ```NodeJS/ES6``` program that takes a text file and outputs a unique list of all words found within the document and the count for how many times that word appeared.
 
-As a data structure, a simple JavaScript object was used to represent a tree, where the properties are used as links and the node holds a count to represent how many times the word (from the root down to the node) appears in the input text.
+As a data structure, a simple JavaScript object was used to represent a tree, where the properties are used as links and the node holds a count to represent how many times the word (from the root down to the node) appears in the input text. In the resultant tree, any node with a positive `count` represents a word in the file.
 
 The algorithm takes, at a higher level, the folowing steps:
   1. Read the file line by line
