@@ -17,7 +17,7 @@ The algorithm takes, at a higher level, the folowing steps:
         var node = this.tree;
         for (var i = 0, char; i < line.length; i++) {                // Loop through every char in the line
             char = line.charAt(i).toString().toLowerCase();          // Make char lowercase to avoid duplicates
-            if (char && /[A-Za-z0-9]/.test(char)) {                   // Validate char(alphanumeric only)
+            if (char && /[A-Za-z0-9]/.test(char)) {                  // Validate char(alphanumeric only)
                 if (!node.hasOwnProperty(char)) {                    // Node does not contain char
                     node[char] = {count: 0};                         // Initialize new node for char
                 }
