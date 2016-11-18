@@ -18,12 +18,13 @@ export class WordCounter {
     /**
      * Reads and processes file line by line
      */
-    count() {
+    countWords() {
         try {
             let reader = createInterface({
                 input: createReadStream(this.filePath)
             });
             reader.on('line', line => this._readLine(line));
+            reader.on('close', line => this._logTree());
         } catch (e) {
             console.log(e);
         }
@@ -42,13 +43,15 @@ export class WordCounter {
                 if (!node.hasOwnProperty(char)) {                    // Node does not contain char
                     node[char] = {count: 0};                         // Initialize new node for char
                 }
-                node = node[char];                                   // Move down to the next node
+                if(i === line.length - 1){                           // Last character in line
+                    node[char].count++;                              // Increment count in node
+                }
+                node = node[char];                                   // Otherwise move down to the next node
             } else if (node !== this.tree) {                         // Invalid char found(end of word)
                 node.count++;                                        // Increment count in node
                 node = this.tree;                                    // Point node back to root
             }
         }
-        this.logTree();
     }
 
     /**
@@ -57,13 +60,13 @@ export class WordCounter {
      * @param node {Object}
      * @param buffer {String}
      */
-    logTree(node = this.tree, buffer = '') {
+    _logTree(node = this.tree, buffer = '') {
         if (node.count > 0) {
             console.log(`"${buffer}" -> count: ${node.count}`);
         }
-        for (var i in node) {
+        for (let i in node) {
             if (node.hasOwnProperty(i) && i !== 'count') {
-                this.logTree(node[i], `${buffer}${i}`)
+                this._logTree(node[i], `${buffer}${i}`)
             }
         }
     }
