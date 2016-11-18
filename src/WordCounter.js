@@ -18,7 +18,7 @@ export class WordCounter {
     /**
      * Reads and processes file line by line
      */
-    count() {
+    countWords() {
         try {
             let reader = createInterface({
                 input: createReadStream(this.filePath)
@@ -48,7 +48,6 @@ export class WordCounter {
                 node = this.tree;                                    // Point node back to root
             }
         }
-        this.logTree();
     }
 
     /**
